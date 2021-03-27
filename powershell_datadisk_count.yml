@@ -19,5 +19,6 @@ steps:
     azureSubscription: 'aks_powershell_connection'
     ScriptType: 'FilePath'
     ScriptArguments: '-$vmname vm ` -$resourcegroup aks'
+    azurePowerShellVersion: LatestVersion
 
 
