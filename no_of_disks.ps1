@@ -1,9 +1,9 @@
 ﻿param(
     [Parameter(Mandatory=$true)]
-    [String]$vmname,
+    [String]$vmname="vm",
 
     [Parameter(Mandatory=$true)]
-    [String]$resourcegroup
+    [String]$resourcegroup="aks"
 
 )
 
