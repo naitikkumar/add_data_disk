@@ -1,6 +1,7 @@
-[String]$vmname = "vm"
-[String]$resourcegroup = "aks"
-
+param(
+[String]$vmname,
+[String]$resourcegroup
+)
 try
 {
 $vm = get-azvm -ResourceGroupName $resourcegroup -Name $vmname
