@@ -15,11 +15,34 @@ pool:
 
 steps:
 - task: AzurePowerShell@5
+  displayName: vnet details using azure cli
   inputs:
     azureSubscription: 'aks_powershell_connection'
     ScriptType: 'FilePath'
     ScriptPath: '$(Build.SourcesDirectory)/no_of_disks.ps1'
     ScriptArguments: '-vmname vm  -resourcegroup aks'
     azurePowerShellVersion: 'LatestVersion'
+    workingDirectory: '$(Build.SourcesDirectory)'
+    FailOnStandardError: true
+    errorActionPreference: stop
+  condition: Succeeded()
+  enabled: true
 
+- task: CopyFiles@2
+  displayName: copying file to artiface stagging directory
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)'
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    CleanTargetFolder: true
+    OverWrite: true
+    preserveTimestamp: true
+  condition: succeeded()
 
+- task: PublishBuildArtifacts@1
+  displayName: contains file related to vnet
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'vnet_config_data'
+    publishLocation: 'Container'
+  condition: succeeded()
