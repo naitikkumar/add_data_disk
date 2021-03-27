@@ -8,7 +8,7 @@ trigger:
 
 variables:
 
-  $workingDir: "$(System.DefaultWorkingDirectory)/no_of_disks.ps1"
+  $scriptDir: "$(System.DefaultWorkingDirectory)/no_of_disks.ps1"
   $workDir: "$(System.DefaultWorkingDirectory)"
 pool:
   vmImage: vs2017-win2016
@@ -20,9 +20,8 @@ steps:
     azureSubscription: 'aks_powershell_connection'
     scriptType: 'ps'
     scriptLocation: 'scriptPath'
-    scriptPath: '$workingDir'
+    scriptPath: '$scriptDir'
     arguments: '-vmname vm ` -resourcegroup aks'
-    workingDirectory: '$workDir'
     failOnStandardError: true
 
 
