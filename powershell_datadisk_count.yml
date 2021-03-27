@@ -17,14 +17,12 @@ steps:
 - task: AzureCLI@2
   displayName: get data disk count
   inputs:
-    azureSubscription: 'Visual Studio Enterprise Subscription (df794e84-3adf-4c42-936d-156f1c6aa7ce)'
+    azureSubscription: 'Visual Studio Enterprise Subscription(df794e84-3adf-4c42-936d-156f1c6aa7ce)'
     scriptType: 'ps'
     scriptLocation: 'scriptPath'
-    scriptPath: $workingDir
-    arguments: 
-      -vmname vm `
-      -resourcegroup aks 
-    workingDirectory: $workDir
+    scriptPath: '$workingDir'
+    arguments: '-vmname vm ` -resourcegroup aks'
+    workingDirectory: '$workDir'
     failOnStandardError: true
 
 
