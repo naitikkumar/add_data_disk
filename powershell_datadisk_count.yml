@@ -14,14 +14,10 @@ pool:
   vmImage: vs2017-win2016
 
 steps:
-- task: AzureCLI@2
-  displayName: get data disk count
+- task: AzurePowerShell@5
   inputs:
     azureSubscription: 'aks_powershell_connection'
-    scriptType: 'ps'
-    scriptLocation: 'scriptPath'
-    scriptPath: '$scriptDir'
-    arguments: '-vmname vm ` -resourcegroup aks'
-    failOnStandardError: true
+    ScriptType: 'FilePath'
+    ScriptArguments: '-$vmname vm ` -$resourcegroup aks'
 
 
