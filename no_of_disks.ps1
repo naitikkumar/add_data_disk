@@ -1,12 +1,8 @@
 ﻿param(
     [Parameter(Mandatory=$true)]
-    [ValidatePattern("[a-z][A-Z]")]
-    [ValidateLength(1,20)]
     [String]$vmname,
 
     [Parameter(Mandatory=$true)]
-    [ValidatePattern("[a-z][A-Z]")]
-    [ValidateLength(1,20)]
     [String]$resourcegroup
 
 )
