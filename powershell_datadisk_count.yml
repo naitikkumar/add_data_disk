@@ -11,7 +11,7 @@ variables:
   $workingDir: "$(Build.SourcesDirectory)/no_of_disks.ps1"
   $workDir: "$(Build.SourcesDirectory)"
 pool:
-  vmImage: $vmname
+  vmImage: '$vmname'
 
 steps:
 - task: AzureCLI@2
