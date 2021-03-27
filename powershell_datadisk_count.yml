@@ -1,0 +1,30 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+variables:
+  $vmname: "windows-2019"
+  $workingDir: "$(Build.SourcesDirectory)/no_of_disks.ps1"
+  $workDir: "$(Build.SourcesDirectory)"
+pool:
+  vmImage: $vmname
+
+steps:
+- task: AzureCLI@2
+  displayName: get data disk count
+  inputs:
+    azureSubscription: 'Visual Studio Enterprise Subscription (df794e84-3adf-4c42-936d-156f1c6aa7ce)'
+    scriptType: 'ps'
+    scriptLocation: 'scriptPath'
+    scriptPath: $workingDir
+    arguments: 
+      -vmname vm `
+      -resourcegroup aks 
+    workingDirectory: $workDir
+    failOnStandardError: true
+
+
