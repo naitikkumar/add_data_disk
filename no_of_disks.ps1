@@ -1,12 +1,5 @@
-﻿param(
-    [Parameter(Mandatory=$true)]
-    [String]$vmname="vm",
-
-    [Parameter(Mandatory=$true)]
-    [String]$resourcegroup="aks"
-
-)
-
+[String]$vmname = "vm"
+[String]$resourcegroup = "aks"
 
 try
 {
