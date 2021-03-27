@@ -8,8 +8,8 @@ trigger:
 
 variables:
 
-  $scriptDir: "no_of_disks.ps1"
-  $workDir: "$(System.DefaultWorkingDirectory)"
+  $scriptDir: 'no_of_disks.ps1'
+  $workDir: '$(System.DefaultWorkingDirectory)'
 pool:
   vmImage: vs2017-win2016
 
